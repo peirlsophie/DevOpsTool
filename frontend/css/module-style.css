@@ -1,0 +1,79 @@
+.module-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.step-label {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 12px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.exercise-instruction input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 2px solid #e0e6ed;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.exercise-instruction input[type="text"]:focus {
+  border-color: #2a7dfa;
+}
+
+.info-box {
+  background: #fff9db;
+  border-left: 5px solid #fab005;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.quiz-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.code-block {
+  background: #2c3e50;
+  color: #42b883;
+  padding: 1.2rem;
+  border-radius: 10px;
+  font-family: "Fira Code", "Courier New", monospace;
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.copy-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.module-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}

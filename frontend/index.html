@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DevOps Learning Hub</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">DevOps Academy</div>
+        <div class="user-profile">
+          <span>Logged in as: <strong>Max_Mustermann</strong></span>
+          <button>Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="dashboard">
+        <h2>Your learning progress</h2>
+        <div class="progress-bar-container">
+          <script src="../frontend/js/progress.js"></script>
+          <div class="progress-bar" style="width: 45%">45%</div>
+        </div>
+        <p>You have completed 3 out of 7 modules.</p>
+      </section>
+
+      <section class="modules">
+        <h2>Available Modules</h2>
+        <div class="module-grid">
+          <article class="module-card in-progress">
+            <h3>DevOps Fundamentals</h3>
+            <p>What is DevOps and CI/CD?</p>
+            <span class="status-badge">In Progress</span>
+            <a href="/modules/devopsBasics.html" class="btn">Continue</a>
+          </article>
+
+          <article class="module-card completed">
+            <h3>Docker & Container</h3>
+            <p>What is containerization and how to use Docker.</p>
+            <span class="status-badge">Completed</span>
+            <a href="/modules/docker.html" class="btn">Repeat</a>
+          </article>
+
+          <article class="module-card locked">
+            <h3>Continous integration and continous deployment</h3>
+            <p>What is CI/CD? What is a pipeline?</p>
+            <span class="status-badge">Completed</span>
+            <a href="/modules/cicd.html" class="btn">Repeat</a>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

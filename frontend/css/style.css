@@ -1,0 +1,139 @@
+/* Grundlegendes Design */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f9; /* Sehr helles Blaugrau */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header & Navigation */
+header {
+  background-color: #ffffff;
+  padding: 1rem 5%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2a7dfa; /* Freundliches Blau */
+}
+
+.user-profile {
+  font-size: 0.9rem;
+}
+
+/* Dashboard / Fortschritt */
+.dashboard {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.progress-bar-container {
+  background-color: #e0e6ed;
+  border-radius: 20px;
+  height: 25px;
+  width: 100%;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #42b883, #34d399); /* Frisches Grün */
+  height: 100%;
+  color: white;
+  text-align: center;
+  line-height: 25px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Modul-Grid */
+.modules {
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Modul-Karten */
+.module-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e1e8ed;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.module-card h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+/* Badges & Buttons */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.completed .status-badge {
+  background: #d1fae5;
+  color: #065f46;
+}
+.in-progress .status-badge {
+  background: #fef3c7;
+  color: #92400e;
+}
+.locked .status-badge {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.btn {
+  margin-top: auto;
+  background-color: #2a7dfa;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #1a63d1;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+}
