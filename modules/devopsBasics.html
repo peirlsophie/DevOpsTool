@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Module: DevOps Fundamentals</title>
+    <link rel="stylesheet" href="../frontend/css/style.css" />
+    <link rel="stylesheet" href="../frontend/css/module-style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <a
+            href="../frontend/index.html"
+            style="text-decoration: none; color: inherit"
+            >← Back to the Dashboard</a
+          >
+        </div>
+        <div class="module-title">Module 1: DevOps Fundamentals</div>
+      </nav>
+    </header>
+
+    <main class="module-container">
+      <section class="learning-section">
+        <span class="step-label">Part 1: Theory</span>
+        <h2>What is DevOps?</h2>
+        <div class="content">
+          <p>
+            DevOps bridges the gap between development and operations by promoting a culture of collaboration, shared responsibilities, and continuous feedback using automation throughout the software development life cycle.</p>
+          </p>
+          Fundamental ideas of DevOps: 
+            <ul>
+              <li>Continous Integration: The practice of frequently merging code changes into a shared repository, to ensure real-time feedback and code quality.</li>
+              <li>Continous Delivery: Changes are built into packages and tested automatically. Aims to ready the latest artifacts for deployment.</li>
+              <li>Communication and collaboration: Promoting effective teamwork, Knowledge sharing and streamlined workflows. </li>
+            </ul>  
+          </p>
+          <p>
+            xyz
+          </p>
+          <div class="info-box"><strong>Remember: </strong> Info</div>
+        </div>
+
+        <div class="quiz-box">
+          <h4>Knowledge check</h4>
+          <p>What is a Container?</p>
+          <script src="..frontend/js/task.js"></script>
+          <form id="quiz-1">
+            <label><input type="radio" name="q1" value="a" /> A single, portable unit used to package an application with all its dependencies (libraries, configuration files, runtime)</label
+            ><br />
+            <label><input type="radio" name="q1" value="b" /> An open-source platform that automates deploying, scaling, and managing containerized applications.</label
+            ><br />
+            <button type="button" class="btn-check" onclick="checkQuiz()">
+              Check answer
+            </button>
+          </form>
+        </div>
+        <h2>What is Docker?</h2>
+        <div class="content">
+          <p>
+            DevOps bridges the gap between development and operations by promoting a culture of collaboration, shared responsibilities, and continuous feedback using automation throughout the software development life cycle.</p>
+          <p>
+            Fundamental ideas of DevOps: 
+            <ol>
+              <li>Continous Integration: </li>
+              <li>Continous Delivery: </li>
+              <li>infrastructure as Code:</li>
+            </ol>
+            The Workflow:
+            <ul>
+              <li>You type docker build -> Client sends request to Daemon -> Daemon creates an Image.</li>
+              <li>You type docker run -> Client sends request to Daemon -> Daemon launches a Container.</li>
+            </ul>
+          </p>
+          <div class="quiz-box">
+          <h4>Knowledge check</h4>
+           <p>What is Docker?</p>
+          <form id="quiz-2">
+            <label><input type="radio" name="q1" value="a" /> The most widely used platform for creating and managing containers</label
+            ><br />
+            <label><input type="radio" name="q1" value="b" /> A package manager for Kubernetes that simplifies deployment and management of applications on Kubernetes clusters.</label><br />
+            <button type="button" class="btn-check" onclick="checkQuiz()">
+              Check answer
+            </button>
+          </form>
+        </div>
+      </section>
+
+
+
+      <hr />
+
+      <section class="learning-section">
+        <span class="step-label">Part 2: Practice</span>
+        <h2>XYZ</h2>
+        <p>xyz</p>
+
+        <div class="code-block">
+          <code>xyz</code>
+          <button class="copy-btn">Copy</button>
+        </div>
+
+        <div class="exercise-instruction">
+          <h4>Exercise:</h4>
+          <p>xyz</p>
+          <input type="text" placeholder="placeholder..." />
+        </div>
+      </section>
+
+      <footer class="module-footer">
+        <button class="btn-secondary">Previous Chapter</button>
+        <script src="../frontend/js/progress.js"></script>
+        <button class="btn-primary" onclick="completeModule()">
+          Complete Module
+        </button>
+      </footer>
+    </main>
+  </body>
+</html>
