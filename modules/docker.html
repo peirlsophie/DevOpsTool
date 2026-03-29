@@ -21,6 +21,7 @@
     </header>
 
     <main class="module-container">
+      <div id="step-1" class="step">
       <section class="learning-section">
         <span class="step-label">Part 1: Theory</span>
         <h2>What is a Container?</h2>
@@ -56,57 +57,82 @@
             </ul>
           </p>
           <div class="info-box"><strong>Remember: </strong> Think of containers in DevOps like shipping containers used in freight transport. Just as shipping containers standardize how goods are packed and moved across various transport modes (ships, trucks, trains), software containers standardize how applications are packaged and deployed across different computing environments.</div>
-        </div>
-
-        <div class="quiz-box">
-          <h4>Knowledge check</h4>
-          <p>What is a Container?</p>
-          <script src="..frontend/js/task.js"></script>
-          <form id="quiz-1">
-            <label><input type="radio" name="q1" value="a" /> A single, portable unit used to package an application with all its dependencies (libraries, configuration files, runtime)</label
-            ><br />
-            <label><input type="radio" name="q1" value="b" /> An open-source platform that automates deploying, scaling, and managing containerized applications.</label
-            ><br />
-            <button type="button" class="btn-check" onclick="checkQuiz()">
-              Check answer
-            </button>
-          </form>
-        </div>
-        <h2>What is Docker?</h2>
-        <div class="content">
-          <p>
-            Docker is the containerization platform that is used to package your application and all its dependencies together in the form of containers to make sure that your application works seamlessly in any environment which can be developed or tested or in production. Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.
-          </p>
-          <p>Docker uses a Client-Server architecture. It is not just a single program, but a system of three parts talking to each other.
-            <ol>
-              <li>Docker Client: The command line tool (docker) that you type commands into.</li>
-              <li>Docker Daemon (dockerd): The background process running on the host that does the heavy lifting (building, running, and distributing containers).</li>
-              <li>Docker Registry: A storage location for Docker Images (like Docker Hub).</li>
-            </ol>
-            The Workflow:
-            <ul>
-              <li>You type docker build -> Client sends request to Daemon -> Daemon creates an Image.</li>
-              <li>You type docker run -> Client sends request to Daemon -> Daemon launches a Container.</li>
-            </ul>
-          </p>
-          <div class="quiz-box">
-          <h4>Knowledge check</h4>
-           <p>What is Docker?</p>
-          <form id="quiz-2">
-            <label><input type="radio" name="q1" value="a" /> The most widely used platform for creating and managing containers</label
-            ><br />
-            <label><input type="radio" name="q1" value="b" /> A package manager for Kubernetes that simplifies deployment and management of applications on Kubernetes clusters.</label><br />
-            <button type="button" class="btn-check" onclick="checkQuiz()">
-              Check answer
-            </button>
-          </form>
+        <button class="btn" onclick="nextStep(2)">Next: Knowledge Check</button>
         </div>
       </section>
+      </div>
 
+      <div id="step-2" class="step" style="display: none;">
+        <section class="learning-section">
+        <div class="quiz-box">
+          <h4>Knowledge Check: Container Basics</h4>
+          <p>Which statement best describes the isolation of a Docker container?</p>
+          <form id="quiz-1">
+              <label><input type="radio" name="q1" value="a" /> Each container has its own full Operating System Kernel, just like a VM.</label><br />
+              <label><input type="radio" name="q1" value="b" /> Containers share the host's OS kernel but remain isolated in their own user space.</label><br />
+              <label><input type="radio" name="q1" value="c" /> Containers are only isolated if they run on different physical servers.</label><br />
+              <br>
+              <button type="button" class="btn" onclick="checkQuiz('quiz-1', 'b')">Check Answer</button>
+          </form>
+          <div id="feedback-quiz-1" class="quiz-feedback"></div>
+          <div class="navigation-btns">
+                <button class="btn-secondary" onclick="nextStep(1)">Back</button>
+                <button class="btn" onclick="nextStep(3)">Next: Docker Architecture</button>
+            </div>
+        </div>
+        </section>
+      </div>
 
+        <div id="step-3" class="step" style="display: none;">
+        <section class="learning-section">
+          <h2>What is Docker?</h2>
+          <div class="content">
+            <p>
+              Docker is the containerization platform that is used to package your application and all its dependencies together in the form of containers to make sure that your application works seamlessly in any environment which can be developed or tested or in production. Docker is a tool designed to make it easier to create, deploy, and run applications by using containers, because it ensures that applications run in the same environment during development, testing, and deployment.
+            </p>
+            <p>Docker uses a Client-Server architecture. It is not just a single program, but a system of three parts talking to each other.
+              <ol>
+                <li>Docker Client: The command line tool (docker) that you type commands into.</li>
+                <li>Docker Daemon (dockerd): The background process running on the host that does the heavy lifting (building, running, and distributing containers).</li>
+                <li>Docker Registry: A storage location for Docker Images (like Docker Hub).</li>
+              </ol>
+              The Workflow:
+              <ul>
+                <li>You type docker build -> Client sends request to Daemon -> Daemon creates an Image.</li>
+                <li>You type docker run -> Client sends request to Daemon -> Daemon launches a Container.</li>
+              </ul>
+            </p>
+            <div class="navigation-btns">
+                  <button class="btn-secondary" onclick="nextStep(2)">Back</button>
+                  <button class="btn" onclick="nextStep(4)">Next: Knowledge Check</button>
+            </div>
+          </div>
+        </section>
+        </div>
 
-      <hr />
+        <div id="step-4" class="step" style="display: none;" >
+          <section class="learning-section">
+            <div class="quiz-box">
+              <h4>Knowledge Check: Docker Components</h4>
+              <p>You want to download a pre-built image from the internet. Which component is responsible for providing this image?</p>
+              <form id="quiz-2">
+                  <label><input type="radio" name="q2" value="a" /> Docker Client</label><br />
+                  <label><input type="radio" name="q2" value="b" /> Docker Daemon</label><br />
+                  <label><input type="radio" name="q2" value="c" /> Docker Registry (e.g. Docker Hub)</label><br />
+                  <br>
+                  <button type="button" class="btn" onclick="checkQuiz('quiz-2', 'c')">Check Answer</button>
+              </form>
+              <div id="feedback-quiz-2" class="quiz-feedback"></div>
+              <div class="navigation-btns">
+                    <button class="btn-secondary" onclick="nextStep(3)">Back</button>
+                    <button class="btn" onclick="nextStep(5)">Next: Practical Lab</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      
 
+    <div id="step-5" class="step" style="display:none;">
       <section class="learning-section">
         <span class="step-label">Part 2: Practice</span>
         <h2>XYZ</h2>
@@ -122,14 +148,18 @@
           <p>xyz</p>
           <input type="text" placeholder="placeholder..." />
         </div>
-      </section>
-
-      <footer class="module-footer">
-        <button class="btn-secondary">Previous Chapter</button>
-        <script src="../frontend/js/progress.js"></script>
-        <button class="btn-primary" onclick="completeModule()">
+        <div class="navigation-btns">
+                    <button class="btn-secondary" onclick="nextStep(4)">Back</button>
+                    <button class="btn-primary" onclick="completeModule('module_docker')">
           Complete Module
         </button>
+              </div>
+      </section>
+    </div>
+
+      <footer class="module-footer">
+        <script src="../frontend/js/task.js"></script>
+        <script src="../frontend/js/progress.js"></script>
       </footer>
     </main>
   </body>

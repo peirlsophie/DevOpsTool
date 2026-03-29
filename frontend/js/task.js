@@ -19,3 +19,17 @@ function checkQuiz(quizId, correctAnswer) {
     feedback.style.color = "#ff4757";
   }
 }
+
+function nextStep(stepNumber) {
+  const steps = document.querySelectorAll(".step");
+
+  steps.forEach((step) => {
+    step.style.display = "none";
+  });
+
+  const currentStep = document.getElementById("step-" + stepNumber);
+  if (currentStep) {
+    currentStep.style.display = "block";
+    window.scrollTo(0, 0);
+  }
+}

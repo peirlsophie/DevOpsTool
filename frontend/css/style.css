@@ -137,3 +137,31 @@ button:disabled {
   border-radius: 8px;
   width: 100%;
 }
+
+.btn-secondary {
+  display: inline-block;
+  background-color: #e0e6ed;
+  color: #475569;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: #053f97;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
