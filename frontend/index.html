@@ -11,7 +11,7 @@
         <div class="logo">DevOps Academy</div>
         <div class="user-profile">
           <span>Logged in as: <strong>Max_Mustermann</strong></span>
-          <button>Logout</button>
+          <button class="btn-secondary">Logout</button>
         </div>
       </nav>
     </header>
@@ -29,28 +29,39 @@
       <section class="modules">
         <h2>Available Modules</h2>
         <div class="module-grid">
-          <article class="module-card in-progress">
+          <article id="card-basics" class="module-card in-progress">
             <h3>DevOps Fundamentals</h3>
             <p>What is DevOps and CI/CD?</p>
-            <span class="status-badge">In Progress</span>
-            <a href="/modules/devopsBasics.html" class="btn">Continue</a>
+            <span id="status-devopsBasics" class="status-badge"></span>
+            <a href="/modules/devopsBasics.html" class="btn">Start Module</a>
           </article>
 
-          <article class="module-card completed">
+          <article id="card-docker" class="module-card locked">
             <h3>Docker & Container</h3>
             <p>What is containerization and how to use Docker.</p>
-            <span class="status-badge">Completed</span>
-            <a href="/modules/docker.html" class="btn">Repeat</a>
+            <span id="status-docker" class="status-badge">Locked</span>
+            <a href="/modules/docker.html" class="btn" id="btn-docker"
+              >Start Module</a
+            >
           </article>
 
-          <article class="module-card locked">
+          <article id="card-cicd" class="module-card locked">
             <h3>Continous integration and continous deployment</h3>
             <p>What is CI/CD? What is a pipeline?</p>
-            <span class="status-badge">Completed</span>
-            <a href="/modules/cicd.html" class="btn">Repeat</a>
+            <span id="status-cicd" class="status-badge">Locked</span>
+            <a href="/modules/cicd.html" class="btn" id="btn-cicd"
+              >Start Module</a
+            >
           </article>
         </div>
       </section>
     </main>
+    <footer class="index-footer">
+      <div>
+        <button class="btn-secondary" onclick="resetEverything()">
+          Reset Progress
+        </button>
+      </div>
+    </footer>
   </body>
 </html>

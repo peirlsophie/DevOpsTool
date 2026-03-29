@@ -1,13 +1,20 @@
-/* Grundlegendes Design */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7f9; /* Sehr helles Blaugrau */
+  background-color: #f4f7f9;
   color: #333;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header & Navigation */
 header {
   background-color: #ffffff;
   padding: 1rem 5%;
@@ -16,18 +23,32 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+main {
+  flex: 1 0 auto;
+  padding-bottom: 3rem;
+}
+
+.index-footer {
+  flex-shrink: 0;
+  background-color: #ffffff;
+  padding: 2rem 5%;
+  border-top: 1px solid #e1e8ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2a7dfa; /* Freundliches Blau */
+  color: #2a7dfa;
 }
 
 .user-profile {
   font-size: 0.9rem;
 }
 
-/* Dashboard / Fortschritt */
 .dashboard {
   max-width: 1000px;
   margin: 2rem auto;
@@ -46,7 +67,7 @@ header {
 }
 
 .progress-bar {
-  background: linear-gradient(90deg, #42b883, #34d399); /* Frisches Grün */
+  background: linear-gradient(90deg, #42b883, #34d399);
   height: 100%;
   color: white;
   text-align: center;
@@ -56,7 +77,7 @@ header {
   transition: width 0.5s ease-in-out;
 }
 
-/* Modul-Grid */
+/* Modules */
 .modules {
   max-width: 1000px;
   margin: 2rem auto;
@@ -68,7 +89,7 @@ header {
   gap: 1.5rem;
 }
 
-/* Modul-Karten */
+/* Module cards */
 .module-card {
   background: #ffffff;
   padding: 1.5rem;
@@ -91,7 +112,13 @@ header {
   color: #2c3e50;
 }
 
-/* Badges & Buttons */
+.module-card.locked {
+  opacity: 0.6;
+  filter: grayscale(0.8);
+  pointer-events: none;
+}
+
+/* Badges and Buttons */
 .status-badge {
   display: inline-block;
   padding: 4px 10px;
@@ -109,6 +136,12 @@ header {
   background: #fef3c7;
   color: #92400e;
 }
+
+.module-card.locked .btn {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 .locked .status-badge {
   background: #f3f4f6;
   color: #6b7280;

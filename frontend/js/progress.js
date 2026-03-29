@@ -1,6 +1,5 @@
 function completeModule(moduleKey) {
   localStorage.setItem(moduleKey, "completed");
-  updateProgress();
   alert("Module finished! Returning to dashboard.");
   window.location.href = "../frontend/index.html";
 }
@@ -11,14 +10,17 @@ function updateProgress() {
 
   if (localStorage.getItem("module_docker") === "completed") {
     completedModules++;
+    UpdateProgressBadge(true, "status-docker");
   }
 
   if (localStorage.getItem("module_cicd") === "completed") {
     completedModules++;
+    UpdateProgressBadge(true, "status-cicd");
   }
 
   if (localStorage.getItem("module_devopsBasics") === "completed") {
     completedModules++;
+    UpdateProgressBadge(true, "status-devopsBasics");
   }
 
   const progressBar = document.querySelector(".progress-bar");
@@ -34,3 +36,95 @@ function updateProgress() {
 }
 
 window.onload = updateProgress;
+
+function UpdateProgressBadge(completed, badgeId) {
+  const progressBadge = document.getElementById(badgeId);
+  if (progressBadge) {
+    if (completed) {
+      progressBadge.innerText = "Completed";
+      const card = progressBadge.closest(".module-card");
+      if (card) {
+        card.classList.add("completed");
+        card.classList.remove("in-progress");
+
+        const btn = card.querySelector(".btn");
+        if (btn) btn.innerText = "Repeat";
+      }
+    }
+  }
+  handleLocking();
+}
+
+function handleLocking() {
+  const basicsDone =
+    localStorage.getItem("module_devopsBasics") === "completed";
+  const dockerDone = localStorage.getItem("module_docker") === "completed";
+
+  const dockerCard = document.getElementById("card-docker");
+  const dockerBtn = document.getElementById("btn-docker");
+  const dockerBadge = document.getElementById("status-docker");
+
+  // unlock docker if basics done
+  if (dockerCard && dockerBtn) {
+    if (basicsDone) {
+      if (localStorage.getItem("module_docker") !== "completed") {
+        dockerCard.classList.remove("locked");
+        dockerCard.classList.add("in-progress");
+        if (dockerBadge) {
+          dockerBadge.innerText = "Available";
+        }
+        dockerBtn.innerText = "Start Module";
+      } else {
+        dockerCard.classList.remove("locked", "in-progress");
+        dockerCard.classList.add("completed");
+        if (dockerBadge) {
+          dockerBadge.innerText = "Completed";
+        }
+        dockerBtn.innerText = "Repeat";
+      }
+
+      dockerBtn.onclick = null;
+    } else {
+      dockerBtn.onclick = function (e) {
+        e.preventDefault();
+        alert("Please complete 'DevOps Fundamentals' first!");
+      };
+    }
+  }
+
+  // unlock cicd if docker is done
+  const cicdCard = document.getElementById("card-cicd");
+  const cicdBtn = document.getElementById("btn-cicd");
+  const cicdBadge = document.getElementById("status-cicd");
+
+  if (cicdCard && cicdBtn) {
+    if (dockerDone) {
+      if (localStorage.getItem("module_cicd") !== "completed") {
+        cicdCard.classList.remove("locked");
+        cicdCard.classList.add("in-progress");
+        if (cicdBadge) {
+          cicdBadge.innerText = "Available";
+        }
+        cicdBtn.innerText = "Start Module";
+      } else {
+        cicdCard.classList.remove("locked", "in-progress");
+        cicdCard.classList.add("completed");
+        if (cicdBadge) {
+          cicdBadge.innerText = "Completed";
+        }
+        cicdBtn.innerText = "Repeat";
+      }
+
+      cicdBtn.onclick = null;
+    } else {
+      cicdBtn.onclick = function (e) {
+        e.preventDefault();
+        alert("Please complete the 'Docker' module first!");
+      };
+    }
+  }
+}
+function resetEverything() {
+  localStorage.clear();
+  location.reload();
+}
