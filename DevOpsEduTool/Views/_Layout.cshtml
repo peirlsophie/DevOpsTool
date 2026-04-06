@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/module-style.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">DevOps Academy</div>
+            <div class="user-profile">
+                <span>Logged in as: <strong>Max_Mustermann</strong></span>
+                <button class="btn-secondary">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()  
+    </main>
+
+    <footer class="index-footer">
+        <div>
+            <button class="btn-secondary" onclick="resetEverything()">Reset Progress</button>
+        </div>
+    </footer>
+
+    <script src="~/js/progress.js"></script>
+</body>
+</html>
