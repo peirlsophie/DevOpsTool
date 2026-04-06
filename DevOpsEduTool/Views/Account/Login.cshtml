@@ -1,0 +1,8 @@
+<h2>Login</h2>
+@if (ViewBag.Error != null) { <p style="color:red">@ViewBag.Error</p> }
+<script src="~/js/login.js"></script>
+<form asp-action="Login" method="post">
+    <input type="text" name="username" placeholder="Username" required /><br />
+    <input type="password" name="password" placeholder="Password" required /><br />
+    <button asp-controller="Account" asp-action="Login" type="submit" onclick="openLogin()">Login</button>
+</form>

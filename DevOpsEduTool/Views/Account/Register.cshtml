@@ -1,0 +1,38 @@
+@model DevOpsEduTool.Models.User
+
+@{
+    ViewData["Title"] = "Join the DevOps Academy";
+}
+
+<div class="register-container">
+    <section class="module-card register-card">
+        <h2>Create your Account</h2>
+        <p>Start your DevOps learning journey!</p>
+        <br />
+
+        <form asp-action="Register" method="post" class="register-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label>Username</label>
+                <input name="Username" class="form-control" placeholder="e.g. Jane_Doe" required />
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input name="Email" type="email" class="form-control" placeholder="your@email.com" required />
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input name="password" type="password" class="form-control" placeholder="Min. 8 characters" required />
+            </div>
+            <br />
+            <button type="submit" class="btn">Register</button>
+        </form>
+
+        <div class="login-link">
+            <p>Already have an account? <a asp-controller="Account" asp-action="Login" onclick="openLogin()">Login here</a></p>
+        </div>
+    </section>
+</div>

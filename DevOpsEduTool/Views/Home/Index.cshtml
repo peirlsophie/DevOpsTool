@@ -2,8 +2,6 @@
     ViewData["Title"] = "DevOps Learning Hub";
 }
 
-
-
         <section class="dashboard">
             <h2>Your learning progress</h2>
             <div class="progress-bar-container">
@@ -16,25 +14,41 @@
         <section class="modules">
             <h2>Available Modules</h2>
             <div class="module-grid">
-                <article id="card-basics" class="module-card in-progress">
-                    <h3>DevOps Fundamentals</h3>
-                    <p>What is DevOps and CI/CD?</p>
-                    <span id="status-devopsBasics" class="status-badge"></span>
-                    <a asp-controller="Modules" asp-action="DevOpsBasics" class="btn">Start Module</a>
+                @foreach (var module in Model)
+    {
+                <article class="module-card @(module.IsLocked ? "locked" : "in-progress")">
+                    <h3>@module.Name</h3>
+                    <p>@module.Description</p>
+                    @if (!module.IsLocked)
+            {
+                    <a asp-controller="Modules" asp-action="@module.ControllerAction" class="btn">Start Module</a>
+            }
+            else
+            {
+                    <span class="status-badge">Locked</span>
+            }
                 </article>
+    }
+                <!-- <article id="card-basics" class="module-card in-progress">
+        <h3>DevOps Fundamentals</h3>
+        <p>What is DevOps and CI/CD?</p>
+        <span id="status-devopsBasics" class="status-badge"></span>
+        <a asp-controller="Modules" asp-action="DevOpsBasics" class="btn">Start Module</a>
+    </article>
 
-                <article id="card-docker" class="module-card locked">
-                    <h3>Docker & Container</h3>
-                    <p>What is containerization and how to use Docker.</p>
-                    <span id="status-docker" class="status-badge">Locked</span>
-                    <a asp-controller="Modules" asp-action="Docker" class="btn" id="btn-docker">Start Module</a>
-                </article>
+    <article id="card-docker" class="module-card locked">
+        <h3>Docker & Container</h3>
+        <p>What is containerization and how to use Docker.</p>
+        <span id="status-docker" class="status-badge">Locked</span>
+        <a asp-controller="Modules" asp-action="Docker" class="btn" id="btn-docker">Start Module</a>
+    </article>
 
-                <article id="card-cicd" class="module-card locked">
-                    <h3>Continous integration and continous deployment</h3>
-                    <p>What is CI/CD? What is a pipeline?</p>
-                    <span id="status-cicd" class="status-badge">Locked</span>
-                    <a asp-controller="Modules" asp-action="CICD" class="btn" id="btn-cicd">Start Module</a>
-                </article>
+    <article id="card-cicd" class="module-card locked">
+        <h3>Continous integration and continous deployment</h3>
+        <p>What is CI/CD? What is a pipeline?</p>
+        <span id="status-cicd" class="status-badge">Locked</span>
+        <a asp-controller="Modules" asp-action="CICD" class="btn" id="btn-cicd">Start Module</a>
+    </article>-->
+
             </div>
         </section>

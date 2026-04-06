@@ -1,7 +1,15 @@
-function completeModule(moduleKey) {
-  localStorage.setItem(moduleKey, "completed");
-  alert("Module finished! Returning to dashboard.");
-  window.location.href = "/";
+async function completeModule(moduleId, moduleKey) {
+    localStorage.setItem(moduleKey, "completed");
+    try {
+        await fetch(`/Modules/SaveProgress?moduleId=${moduleId}&status=completed`, {
+            method: 'POST'
+        });
+    } catch (err) {
+        console.error("Database sync failed", err);
+    }
+
+    alert("Module finished! Progress saved.");
+    window.location.href = "/";
 }
 
 function updateProgress() {
@@ -124,6 +132,33 @@ function handleLocking() {
     }
   }
 }
+
+async function syncProgressWithDatabase() {
+    try {
+        const response = await fetch('/Modules/GetUserProgress'); 
+        const data = await response.json();
+
+        
+        data.forEach(p => {
+            
+            let key = "";
+            if (p.moduleId === 1) key = "module_devopsBasics";
+            if (p.moduleId === 2) key = "module_cicd";
+            if (p.moduleId === 3) key = "module_docker";
+
+            localStorage.setItem(key, p.status);
+        });
+
+        
+        updateProgress();
+    } catch (e) {
+        
+        updateProgress();
+    }
+}
+
+
+window.onload = syncProgressWithDatabase;
 function resetEverything() {
   localStorage.clear();
   location.reload();

@@ -1,6 +1,7 @@
 @{
     ViewData["Title"] = "DevOpsBasics";
 }
+@model DevOpsEduTool.Models.Module
 
 <body>
     <header>
@@ -9,7 +10,7 @@
                 <a asp-controller="Home" asp-action="Index"
                    style="text-decoration: none; color: inherit">&#8592; Back to the Dashboard</a>
             </div>
-            <div class="module-title">Module 1: DevOps Fundamentals</div>
+            <div class="module-title">Module 1: @Model.Name</div>
         </nav>
     </header>
 
@@ -128,7 +129,7 @@
                 </div>
                 <div class="navigation-btns">
                     <button class="btn-secondary" onclick="nextStep(4)">Back</button>
-                    <button class="btn-primary" onclick="completeModule('module_devopsBasics')">
+                    <button class="btn-primary" onclick="completeModule(1, 'module_devopsBasics')">
                         Complete Module
                     </button>
                 </div>

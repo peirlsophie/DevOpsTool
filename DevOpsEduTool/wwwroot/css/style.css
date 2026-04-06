@@ -77,6 +77,44 @@ main {
   transition: width 0.5s ease-in-out;
 }
 
+/* Das Hintergrund-Overlay */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Abdunklung */
+}
+
+/* Das eigentliche Fenster */
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.modal-content input {
+    width: 90%;
+    margin: 10px 0;
+    padding: 8px;
+}
+
 /* Modules */
 .modules {
   max-width: 1000px;
