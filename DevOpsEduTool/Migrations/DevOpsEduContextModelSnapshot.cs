@@ -37,9 +37,6 @@ namespace DevOpsEduTool.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsLocked")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -52,25 +49,22 @@ namespace DevOpsEduTool.Migrations
                         new
                         {
                             Id = 1,
-                            ControllerAction = "",
+                            ControllerAction = "DevOpsBasics",
                             Description = "Intro to DevOps & CI/CD",
-                            IsLocked = true,
                             Name = "DevOps Fundamentals"
                         },
                         new
                         {
                             Id = 2,
-                            ControllerAction = "",
+                            ControllerAction = "Docker",
                             Description = "Containerization basics",
-                            IsLocked = true,
                             Name = "Docker & Container"
                         },
                         new
                         {
                             Id = 3,
-                            ControllerAction = "",
+                            ControllerAction = "CICD",
                             Description = "Build & deploy pipelines",
-                            IsLocked = true,
                             Name = "CI/CD Pipelines"
                         });
                 });

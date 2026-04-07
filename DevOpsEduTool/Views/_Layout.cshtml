@@ -13,8 +13,8 @@
             <div class="user-profile">
                 @if (User.Identity.IsAuthenticated) {
                 <span>Logged in as: <strong>@User.Identity?.Name</strong></span>
-                <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline">
-                    <button type="submit" class="btn-secondary">Logout</button>
+                <form asp-controller="Account" asp-action="Logout" method="post" onclick="localStorage.clear()" style="display:inline">
+                    <button type="submit" class="btn-secondary" >Logout</button>
                 </form>
         } else {
                 <button class="btn" onclick="openLogin()">Login</button>

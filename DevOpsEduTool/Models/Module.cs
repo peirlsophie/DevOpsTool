@@ -14,8 +14,6 @@ namespace DevOpsEduTool.Models
 
         public string ControllerAction { get; set; } = string.Empty;
 
-        public bool IsLocked { get; set; } = true;
-
         public List<UserProgress> Progresses { get; set; } = new List<UserProgress>();
     }
 }
