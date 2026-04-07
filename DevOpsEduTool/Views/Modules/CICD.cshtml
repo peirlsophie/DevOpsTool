@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "CICD";
+    ViewData["Title"] = "CI/CD Pipelines";
 }
 @model DevOpsEduTool.Models.Module
 
@@ -18,20 +18,21 @@
         <div id="step-1" class="step">
             <section class="learning-section">
                 <span class="step-label">Part 1: Theory</span>
-                <h2>What is DevOps?</h2>
+                <h2>The Automation Engine: CI/CD</h2>
                 <div class="content">
                     <p>
-                        xyz
-                        <ul>
-                            <li>xyz</li>
-                            <li>xyz</li>
-                            <li>xyz</li>
-                        </ul>
+                        In traditional software development, "Release Day" was a stressful event. Developers had to merge weeks of work manually, often leading to "Merge Hell."
+                        <strong>CI/CD</strong> solves this by making integration and deployment a non-event through constant automation.
                     </p>
-                    <p>
-                        xyz
-                    </p>
-                    <div class="info-box"><strong>Remember: </strong> Info</div>
+                    <ul>
+                        <li><strong>Continuous Integration (CI):</strong> Developers push code to a shared repo several times a day. Each push triggers an automated build and test sequence.</li>
+                        <li><strong>Continuous Delivery (CD):</strong> Every "green" build is automatically packaged and ready to be deployed to any environment (Test, Staging) at the click of a button.</li>
+                        <li><strong>Continuous Deployment:</strong> The ultimate goal where every change that passes all stages of your production pipeline is released to your customers <strong>automatically</strong>.</li>
+                    </ul>
+
+
+
+                    <div class="info-box"><strong>Remember:</strong> CI is about code quality and fast feedback; CD is about reliable and frequent releases.</div>
                     <button class="btn" onclick="nextStep(2)">Next: Knowledge Check</button>
                 </div>
             </section>
@@ -40,20 +41,20 @@
         <div id="step-2" class="step" style="display: none;">
             <section class="learning-section">
                 <div class="quiz-box">
-                    <h4>Knowledge check</h4>
-                    <p>XYZ</p>
-                    <script src="~/js/task.js"></script>
-                    <form id="quiz-1">
-                        <label><input type="radio" name="q1" value="a" />xyz</label><br />
-                        <label><input type="radio" name="q1" value="b" />xyz</label><br />
-                        <button type="button" class="btn-check" onclick="checkQuiz()">
-                            Check answer
+                    <h4>Knowledge Check: Continuous Integration</h4>
+                    <p>A team is struggling with bugs appearing only after merging their code once a week. Which practice would help them most?</p>
+                    <form id="cicd-1">
+                        <label><input type="radio" name="q1" value="a" /> Implementing CI to merge code daily and run automated tests on every commit.</label><br />
+                        <label><input type="radio" name="q1" value="b" /> Sending the code to a separate QA team once a month for manual inspection.</label><br />
+
+                        <button type="button" class="btn" onclick="checkQuiz('cicd-1', 'a')">
+                            Check Answer
                         </button>
                     </form>
-                    <div id="feedback-quiz-1" class="quiz-feedback"></div>
+                    <div id="feedback-quiz-cicd-1" class="quiz-feedback"></div>
                     <div class="navigation-btns">
                         <button class="btn-secondary" onclick="nextStep(1)">Back</button>
-                        <button class="btn" onclick="nextStep(3)">Next: XYZ</button>
+                        <button class="btn" onclick="nextStep(3)">Next: The Pipeline Stages</button>
                     </div>
                 </div>
             </section>
@@ -61,24 +62,36 @@
 
         <div id="step-3" class="step" style="display: none;">
             <section class="learning-section">
-                <h2>XYZ</h2>
+                <h2>Anatomy of a Pipeline</h2>
                 <div class="content">
                     <p>
-                        xyz
+                        A pipeline is a sequence of steps your code must pass. Most modern pipelines are defined as <strong>"Pipeline as Code"</strong> using YAML files.
                     </p>
                     <p>
-                        Fundamental ideas of DevOps:
+                        <strong>Standard Stages:</strong>
                         <ol>
-                            <li>Continous Integration: </li>
-                            <li>Continous Delivery: </li>
-                            <li>infrastructure as Code:</li>
+                            <li><strong>Source Stage:</strong> Triggered when you push code to GitHub/GitLab.</li>
+                            <li><strong>Build Stage:</strong> Your code is compiled. In modern DevOps, this usually means creating a <strong>Docker Image</strong>.</li>
+                            <li><strong>Test Stage:</strong> Automated unit, integration, and security tests are performed.</li>
+                            <li><strong>Deploy Stage:</strong> If tests pass, the container is pushed to a server (like Kubernetes or Azure).</li>
                         </ol>
-                        sdsd
-                        <ul>
-                            <li>xyz</li>
-                            <li>xyz</li>
-                        </ul>
                     </p>
+
+                    <h4>Example: GitHub Actions Template (US5)</h4>
+                    <div class="code-block" style="background: #2d2d2d; color: #ccc; padding: 15px; border-radius: 5px; font-family: monospace;">
+                        <pre>
+                            jobs:
+                              build-and-test:
+                                runs-on: ubuntu-latest
+                                steps:
+                                  - uses: actions/checkout@v2
+                                  - name: Run Tests
+                                    run: npm test
+                                  - name: Build Docker Image
+                                    run: docker build -t my-app .
+                        </pre>
+                    </div>
+
                     <div class="navigation-btns">
                         <button class="btn-secondary" onclick="nextStep(2)">Back</button>
                         <button class="btn" onclick="nextStep(4)">Next: Knowledge Check</button>
@@ -90,19 +103,20 @@
         <div id="step-4" class="step" style="display: none;">
             <section class="learning-section">
                 <div class="quiz-box">
-                    <h4>Knowledge check</h4>
-                    <p>xyz</p>
-                    <form id="quiz-2">
-                        <label><input type="radio" name="q1" value="a" /> xyz</label><br />
-                        <label><input type="radio" name="q1" value="b" /> xyz</label><br />
-                        <button type="button" class="btn-check" onclick="checkQuiz()">
-                            Check answer
+                    <h4>Knowledge Check: Delivery vs Deployment</h4>
+                    <p>What distinguishes Continuous <strong>Deployment</strong> from Continuous <strong>Delivery</strong>?</p>
+                    <form id="cicd-2">
+                        <label><input type="radio" name="q1" value="a" /> Deployment requires a manual approval button before the code goes live.</label><br />
+                        <label><input type="radio" name="q1" value="b" /> Deployment releases the code to production automatically as soon as it passes all tests.</label><br />
+
+                        <button type="button" class="btn" onclick="checkQuiz('cicd-2', 'b')">
+                            Check Answer
                         </button>
                     </form>
-                    <div id="feedback-quiz-2" class="quiz-feedback"></div>
+                    <div id="feedback-quiz-cicd-2" class="quiz-feedback"></div>
                     <div class="navigation-btns">
                         <button class="btn-secondary" onclick="nextStep(3)">Back</button>
-                        <button class="btn" onclick="nextStep(5)">Next: Practical Lab</button>
+                        <button class="btn" onclick="nextStep(5)">Next: Practical Simulation</button>
                     </div>
                 </div>
             </section>
@@ -111,24 +125,26 @@
         <div id="step-5" class="step" style="display:none;">
             <section class="learning-section">
                 <span class="step-label">Part 2: Practice</span>
-                <h2>XYZ</h2>
-                <p>xyz</p>
+                <h2>Interactive Pipeline Simulation</h2>
+                <p>Experience the automation! Click the stages to move your code from a commit to a live running container.</p>
 
-                <div class="code-block">
-                    <code>xyz</code>
-                    <button class="copy-btn">Copy</button>
+                <div class="pipeline-container" style="background: #1e1e1e; padding: 25px; border-radius: 12px; color: white; border-left: 5px solid #007bff;">
+                    <div id="pipeline-log" style="font-family: 'Courier New', Courier, monospace; margin-bottom: 20px; font-size: 0.9em; height: 100px; overflow-y: auto;">
+                        <p style="color: #888;">> System ready. Awaiting git push...</p>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button id="sim-build" class="btn" onclick="runSimulation('sim-build', 'sim-test', 'BUILD: Code compiled into Docker Image.')">1. Run Build</button>
+                        <button id="sim-test" class="btn" style="display:none;" onclick="runSimulation('sim-test', 'sim-deploy', 'TEST: Unit & Integration tests passed (100%).')">2. Run Tests</button>
+                        <button id="sim-deploy" class="btn" style="display:none;" onclick="runSimulation('sim-deploy', null, 'DEPLOY: Container pushed to Production Cluster.')">3. Deploy to Prod</button>
+                    </div>
                 </div>
 
-                <div class="exercise-instruction">
-                    <h4>Exercise:</h4>
-                    <p>xyz</p>
-                    <input type="text" placeholder="placeholder..." />
-                </div>
-                <div class="navigation-btns">
-                    <button class="btn-secondary" onclick="nextStep(4)">Back</button>
-                    <button class="btn-primary" onclick="completeModule(3, 'module_cicd')">
-                        Complete Module
-                    </button>
+                <div id="finish-sim" style="display:none; margin-top: 25px;">
+                    <div class="info-box" style="border-color: #42b883; background: rgba(66, 184, 131, 0.1);">
+                        <strong>Status: Live!</strong> Your code is now running in production. This automated feedback loop allows teams to innovate faster with less risk.
+                    </div>
+                    <button class="btn-primary" onclick="completeModule(3, 'module_cicd')">Finish Learning Path</button>
                 </div>
             </section>
         </div>

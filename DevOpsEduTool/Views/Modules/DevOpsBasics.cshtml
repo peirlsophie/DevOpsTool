@@ -23,18 +23,25 @@
                     <p>
                         DevOps bridges the gap between development and operations by promoting a culture of collaboration, shared responsibilities, and continuous feedback using automation throughout the software development life cycle.
                     </p>
-                    </p>
+                    <div class="theory-image-container">
+                        <img src="~/images/octopus-devops-infinity.png"
+                             alt="DevOps Lifecycle Infinity Loop"
+                             class="theory-img" />
+                        <p class="image-caption">Figure 1: The Continuous DevOps Lifecycle</p>
+                    </div>
                     Fundamental ideas of DevOps:
                     <ul>
                         <li>Continous Integration: The practice of frequently merging code changes into a shared repository, to ensure real-time feedback and code quality.</li>
                         <li>Continous Delivery: Changes are built into packages and tested automatically. Aims to ready the latest artifacts for deployment.</li>
                         <li>Communication and collaboration: Promoting effective teamwork, Knowledge sharing and streamlined workflows. </li>
                     </ul>
-                    </p>
-                    <p>
-                        xyz
-                    </p>
-                    <div class="info-box"><strong>Remember: </strong> Info</div>
+                    <p>The DevOps Lifecycle is often visualized as an infinity loop, showing that software development is a continuous process:</p>
+                    <div class="info-box">
+                        <strong>Remember:</strong> DevOps is about breaking down the <strong>"Wall of Confusion."</strong>
+                        In the past, Developers just "threw their code over the wall" to Operations,
+                        leaving Ops to fix any bugs during deployment.
+                        DevOps removes this wall: Both teams share the responsibility for the software's success from the first line of code to the final release.
+                    </div>
                     <button class="btn" onclick="nextStep(2)">Next: Knowledge Check</button>
                 </div>
             </section>
@@ -44,16 +51,16 @@
             <section class="learning-section">
                 <div class="quiz-box">
                     <h4>Knowledge check</h4>
-                    <p>What is a Container?</p>
+                    <p>What is the main goal of DevOps?</p>
                     <script src="~/js/task.js"></script>
-                    <form id="quiz-1">
-                        <label><input type="radio" name="q1" value="a" /> A single, portable unit used to package an application with all its dependencies (libraries, configuration files, runtime)</label><br />
-                        <label><input type="radio" name="q1" value="b" /> An open-source platform that automates deploying, scaling, and managing containerized applications.</label><br />
-                        <button type="button" class="btn-check" onclick="checkQuiz()">
+                    <form id="devops-1">
+                        <label><input type="radio" name="q1" value="a" /> To bridge the gap between development and operations through collaboration and automation.</label><br />
+                        <label><input type="radio" name="q1" value="b" /> To replace developers with automated AI tools entirely.</label><br />
+                        <button type="button" class="btn-check" onclick="checkQuiz('devops-1','a')">
                             Check answer
                         </button>
                     </form>
-                    <div id="feedback-quiz-1" class="quiz-feedback"></div>
+                    <div id="feedback-quiz-devops-1" class="quiz-feedback"></div>
                     <div class="navigation-btns">
                         <button class="btn-secondary" onclick="nextStep(1)">Back</button>
                         <button class="btn" onclick="nextStep(3)">Next: Docker Architecture</button>
@@ -95,14 +102,14 @@
                 <div class="quiz-box">
                     <h4>Knowledge check</h4>
                     <p>What is Docker?</p>
-                    <form id="quiz-2">
+                    <form id="devops-2">
                         <label><input type="radio" name="q1" value="a" /> The most widely used platform for creating and managing containers</label><br />
-                        <label><input type="radio" name="q1" value="b" /> A package manager for Kubernetes that simplifies deployment and management of applications on Kubernetes clusters.</label><br />
-                        <button type="button" class="btn-check" onclick="checkQuiz()">
+                        <label><input type="radio" name="q1" value="b" /> A hardware server used for cloud storage.</label><br />
+                        <button type="button" class="btn-check" onclick="checkQuiz('devops-2', 'a')">
                             Check answer
                         </button>
                     </form>
-                    <div id="feedback-quiz-2" class="quiz-feedback"></div>
+                    <div id="feedback-quiz-devops-2" class="quiz-feedback"></div>
                     <div class="navigation-btns">
                         <button class="btn-secondary" onclick="nextStep(3)">Back</button>
                         <button class="btn" onclick="nextStep(5)">Next: Practical Lab</button>
@@ -114,19 +121,21 @@
         <div id="step-5" class="step" style="display:none;">
             <section class="learning-section">
                 <span class="step-label">Part 2: Practice</span>
-                <h2>XYZ</h2>
-                <p>xyz</p>
-
-                <div class="code-block">
-                    <code>xyz</code>
-                    <button class="copy-btn">Copy</button>
-                </div>
+                <h2>Exercise: The DevOps Pipeline Flow</h2>
+                <p>In DevOps, automation follows a specific sequence. Imagine you just finished coding a new feature. Put the following steps in the <strong>correct logical order</strong> by typing the numbers 1 to 4.</p>
 
                 <div class="exercise-instruction">
-                    <h4>Exercise:</h4>
-                    <p>xyz</p>
-                    <input type="text" placeholder="placeholder..." />
+                    <ul style="list-style: none; padding: 0;">
+                        <li><input type="number" id="flow-deploy" style="width: 40px;" min="1" max="4"> <strong>Deploy:</strong> The application goes live on the server.</li>
+                        <li><input type="number" id="flow-plan" style="width: 40px;" min="1" max="4"> <strong>Plan:</strong> Define requirements and design the feature.</li>
+                        <li><input type="number" id="flow-build" style="width: 40px;" min="1" max="4"> <strong>Build:</strong> The code is compiled and packaged (e.g., into a Container).</li>
+                        <li><input type="number" id="flow-test" style="width: 40px;" min="1" max="4"> <strong>Test:</strong> Automated units tests verify the code quality.</li>
+                    </ul>
+
+                    <button type="button" class="btn-check" onclick="checkBasicsFlow()">Check Sequence</button>
+                    <div id="feedback-basics-flow" class="quiz-feedback" style="margin-top: 10px;"></div>
                 </div>
+
                 <div class="navigation-btns">
                     <button class="btn-secondary" onclick="nextStep(4)">Back</button>
                     <button class="btn-primary" onclick="completeModule(1, 'module_devopsBasics')">

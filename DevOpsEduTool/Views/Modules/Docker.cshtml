@@ -67,14 +67,14 @@
                 <div class="quiz-box">
                     <h4>Knowledge Check: Container Basics</h4>
                     <p>Which statement best describes the isolation of a Docker container?</p>
-                    <form id="quiz-1">
+                    <form id="docker-1">
                         <label><input type="radio" name="q1" value="a" /> Each container has its own full Operating System Kernel, just like a VM.</label><br />
                         <label><input type="radio" name="q1" value="b" /> Containers share the host's OS kernel but remain isolated in their own user space.</label><br />
                         <label><input type="radio" name="q1" value="c" /> Containers are only isolated if they run on different physical servers.</label><br />
                         <br>
-                        <button type="button" class="btn" onclick="checkQuiz('quiz-1', 'b')">Check Answer</button>
+                        <button type="button" class="btn" onclick="checkQuiz('docker-1', 'b')">Check Answer</button>
                     </form>
-                    <div id="feedback-quiz-1" class="quiz-feedback"></div>
+                    <div id="feedback-quiz-docker-1" class="quiz-feedback"></div>
                     <div class="navigation-btns">
                         <button class="btn-secondary" onclick="nextStep(1)">Back</button>
                         <button class="btn" onclick="nextStep(3)">Next: Docker Architecture</button>
@@ -116,14 +116,14 @@
                 <div class="quiz-box">
                     <h4>Knowledge Check: Docker Components</h4>
                     <p>You want to download a pre-built image from the internet. Which component is responsible for providing this image?</p>
-                    <form id="quiz-2">
+                    <form id="docker-2">
                         <label><input type="radio" name="q2" value="a" /> Docker Client</label><br />
                         <label><input type="radio" name="q2" value="b" /> Docker Daemon</label><br />
                         <label><input type="radio" name="q2" value="c" /> Docker Registry (e.g. Docker Hub)</label><br />
                         <br>
-                        <button type="button" class="btn" onclick="checkQuiz('quiz-2', 'c')">Check Answer</button>
+                        <button type="button" class="btn" onclick="checkQuiz('docker-2', 'c')">Check Answer</button>
                     </form>
-                    <div id="feedback-quiz-2" class="quiz-feedback"></div>
+                    <div id="feedback-quiz-docker-2" class="quiz-feedback"></div>
                     <div class="navigation-btns">
                         <button class="btn-secondary" onclick="nextStep(3)">Back</button>
                         <button class="btn" onclick="nextStep(5)">Next: Practical Lab</button>
@@ -136,24 +136,36 @@
         <div id="step-5" class="step" style="display:none;">
             <section class="learning-section">
                 <span class="step-label">Part 2: Practice</span>
-                <h2>XYZ</h2>
-                <p>xyz</p>
+                <h2>Creating your first Dockerfile</h2>
+                <p>A <strong>Dockerfile</strong> is a text document that contains all the commands a user could call on the command line to assemble an image.</p>
 
                 <div class="code-block">
-                    <code>xyz</code>
-                    <button class="copy-btn">Copy</button>
+                    <pre>
+                        # Use an official Python runtime as a parent image
+                        FROM python:3.8-slim
+
+                        # Set the working directory in the container
+                        WORKDIR /app
+
+                        # Copy the current directory contents into the container
+                        COPY . /app
+
+                        # Run app.py when the container launches
+                        CMD ["python", "app.py"]
+            </pre>
+                    <button class="copy-btn" onclick="alert('Copied to clipboard!')">Copy Template</button>
                 </div>
 
                 <div class="exercise-instruction">
-                    <h4>Exercise:</h4>
-                    <p>xyz</p>
-                    <input type="text" placeholder="placeholder..." />
+                    <h4>Interactive Exercise:</h4>
+                    <p>Which command is used to <strong>build</strong> an image from this Dockerfile? (Hint: check Part 1 Theory)</p>
+                    <input type="text" id="docker-exercise-input" placeholder="Type command here..." />
+                    <button class="btn-check" onclick="if(document.getElementById('docker-exercise-input').value.includes('docker build')){ alert('Correct! docker build creates the image.'); } else { alert('Hint: It starts with docker...'); }">Check</button>
                 </div>
+
                 <div class="navigation-btns">
                     <button class="btn-secondary" onclick="nextStep(4)">Back</button>
-                    <button class="btn-primary" onclick="completeModule(2, 'module_docker')">
-                        Complete Module
-                    </button>
+                    <button class="btn-primary" onclick="completeModule(2, 'module_docker')">Complete Module</button>
                 </div>
             </section>
         </div>
