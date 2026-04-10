@@ -8,12 +8,10 @@ namespace DevOpsEduTool.Controllers
 {
     public class ModulesController : Controller
     {
-        private readonly ILogger<ModulesController> _logger;
         private readonly DevOpsEduContext _context;
 
-        public ModulesController(ILogger<ModulesController> logger, DevOpsEduContext context)
+        public ModulesController(DevOpsEduContext context)
         {
-            _logger = logger;
             _context = context;
         }
 
