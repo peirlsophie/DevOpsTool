@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Moq;
 using System.Security.Claims;
 
-namespace DevOpsEduTool.Tests
+namespace DevOpsEduTool.Testing
 {
     [TestFixture]
     public class AccountControllerTests
