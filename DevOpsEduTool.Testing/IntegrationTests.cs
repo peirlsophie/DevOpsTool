@@ -17,12 +17,11 @@ namespace DevOpsEduTool.Testing
         {
             _factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
             {
-                // Set the environment to Testing
                 builder.UseEnvironment("Testing");
 
                 builder.ConfigureServices(services =>
                 {
-                    // 1. Remove the production database configuration
+                    // remove production db config
                     var descriptor = services.SingleOrDefault(
                         d => d.ServiceType == typeof(DbContextOptions<DevOpsEduContext>));
 
@@ -31,18 +30,18 @@ namespace DevOpsEduTool.Testing
                         services.Remove(descriptor);
                     }
 
-                    // 2. Add an In-Memory Database for clean, isolated testing
+                    //in memory db for testing
                     services.AddDbContext<DevOpsEduContext>(options =>
                     {
                         options.UseInMemoryDatabase("InMemoryDbForTesting");
                     });
 
-                    // 3. Build a service provider to ensure the DB is seeded
+                    //service provider to trigger seeding
                     var sp = services.BuildServiceProvider();
                     using (var scope = sp.CreateScope())
                     {
                         var db = scope.ServiceProvider.GetRequiredService<DevOpsEduContext>();
-                        db.Database.EnsureCreated(); // This triggers your Module seeding!
+                        db.Database.EnsureCreated();
                     }
                     services.ConfigureApplicationCookie(options => {
                         options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None;
@@ -51,7 +50,7 @@ namespace DevOpsEduTool.Testing
                 });
             });
 
-            // Create a client that handles cookies automatically
+            //client to handle cookies
             _client = _factory.CreateClient(new WebApplicationFactoryClientOptions
             {
                 AllowAutoRedirect = true
