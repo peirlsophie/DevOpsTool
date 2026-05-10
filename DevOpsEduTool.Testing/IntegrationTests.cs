@@ -43,7 +43,8 @@ namespace DevOpsEduTool.Testing
                         var db = scope.ServiceProvider.GetRequiredService<DevOpsEduContext>();
                         db.Database.EnsureCreated();
                     }
-                    services.ConfigureApplicationCookie(options => {
+                    services.ConfigureApplicationCookie(options =>
+                    {
                         options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None;
                         options.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.None;
                     });

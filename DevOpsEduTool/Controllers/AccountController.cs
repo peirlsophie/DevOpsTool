@@ -58,14 +58,14 @@ namespace DevOpsEduTool.Controllers
         [HttpPost]
         public IActionResult Register(User newUser, string password)
         {
-           
+
             if (_context.Users.Any(u => u.Username == newUser.Username || u.Email == newUser.Email))
             {
                 ModelState.AddModelError("", "Username or Email is already taken.");
                 return View(newUser);
             }
 
-            newUser.PasswordHash = password; 
+            newUser.PasswordHash = password;
 
             _context.Users.Add(newUser);
             _context.SaveChanges();

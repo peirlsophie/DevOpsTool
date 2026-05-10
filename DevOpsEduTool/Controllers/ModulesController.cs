@@ -57,7 +57,7 @@ namespace DevOpsEduTool.Controllers
                 progress.Status = status;
             }
 
-            await _context.SaveChangesAsync(); 
+            await _context.SaveChangesAsync();
             return Ok();
         }
         [HttpGet]
@@ -67,14 +67,15 @@ namespace DevOpsEduTool.Controllers
 
             if (userIdClaim == null)
             {
-                return Json(new List<object>()); 
+                return Json(new List<object>());
             }
 
             int userId = int.Parse(userIdClaim);
 
             var progressList = await _context.UserProgress
                 .Where(p => p.UserId == userId)
-                .Select(p => new {
+                .Select(p => new
+                {
                     moduleId = p.ModuleId,
                     status = p.Status
                 })

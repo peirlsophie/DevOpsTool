@@ -20,7 +20,7 @@ namespace DevOpsEduTool.Data
 
             // Optionale Seed-Daten
             modelBuilder.Entity<Module>().HasData(
-                new Module { Id = 1, Name = "DevOps Fundamentals", ControllerAction = "DevOpsBasics", Description = "Intro to DevOps & CI/CD"},
+                new Module { Id = 1, Name = "DevOps Fundamentals", ControllerAction = "DevOpsBasics", Description = "Intro to DevOps & CI/CD" },
                 new Module { Id = 2, Name = "Docker & Container", ControllerAction = "Docker", Description = "Containerization basics" },
                 new Module { Id = 3, Name = "CI/CD Pipelines", ControllerAction = "CICD", Description = "Build & deploy pipelines" }
             );

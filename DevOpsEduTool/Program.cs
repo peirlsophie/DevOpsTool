@@ -12,7 +12,8 @@ builder.Services.AddDbContext<DevOpsEduContext>(options =>
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options => {
+    .AddCookie(options =>
+    {
         options.LoginPath = "/Account/Login";
         options.LogoutPath = "/Account/Logout";
     });

@@ -89,7 +89,7 @@ namespace DevOpsEduTool.Testing
         public async Task Login_WithWrongCredentials_DoesNotSignIn()
         {
             // Arrange
-            var user = new User { Username = "user1", Email = "user@mail.com",PasswordHash = "correct_pass" };
+            var user = new User { Username = "user1", Email = "user@mail.com", PasswordHash = "correct_pass" };
             _db.Users.Add(user);
             _db.SaveChanges();
 

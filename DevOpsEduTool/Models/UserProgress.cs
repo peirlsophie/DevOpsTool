@@ -9,7 +9,7 @@ namespace DevOpsEduTool.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         [Required]
-        public User User { get; set; } = null! ;
+        public User User { get; set; } = null!;
 
         public int ModuleId { get; set; }
         [Required]
