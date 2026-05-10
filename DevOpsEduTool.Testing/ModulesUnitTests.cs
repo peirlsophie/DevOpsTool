@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using System.Security.Claims;
+using NUnit.Framework;
 
 
 namespace DevOpsEduTool.Testing
 {
+    [TestFixture]
     public class ModulesUnitTests
     {
         private DevOpsEduContext _db;
