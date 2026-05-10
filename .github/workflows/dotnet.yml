@@ -1,0 +1,50 @@
+name: DevOps Learning Hub CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      # This starts a real PostgreSQL instance for your Integration Tests
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: DevOpsEduDb
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        # Wait until postgres is ready before starting the tests
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.0 
+    - name: Restore Dependencies
+      run: dotnet restore
+
+    - name: Static Code Analysis (Build)
+      # This step acts as SCA by checking for syntax, reference, and compiler errors
+      run: dotnet build --no-restore --configuration Release
+
+    - name: Run Automated Tests
+      # This runs your NUnit tests and generates the results
+      run: dotnet test --no-build --configuration Release --verbosity normal
+      env:
+        # Pass the connection string to your tests so they find the service above
+        ConnectionStrings__DefaultConnection: "Host=localhost;Database=DevOpsEduDb;Username=postgres;Password=postgres"
